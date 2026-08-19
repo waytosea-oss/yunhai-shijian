@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>云海诗鉴 - 公众号一键复制版</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #202526;
+      background: #e9edef;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px 16px 56px; }
+    .copy-panel {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      max-width: 760px;
+      margin: 0 auto 18px;
+      padding: 16px;
+      border: 1px solid #d6dcde;
+      border-radius: 7px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 8px 24px rgba(23,31,33,.12);
+      backdrop-filter: blur(8px);
+    }
+    .copy-panel h1 { margin: 0; font-size: 18px; line-height: 1.4; }
+    .copy-panel p { margin: 6px 0 0; color: #687174; font-size: 13px; line-height: 1.6; }
+    .copy-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+    .copy-actions button {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid #cbd2d4;
+      border-radius: 6px;
+      background: #fff;
+      color: #263032;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .copy-actions button:hover { border-color: #7f8c8f; background: #f5f7f7; }
+    .copy-actions .primary { border-color: #176e69; background: #176e69; color: #fff; }
+    .copy-actions .primary:hover { background: #125e5a; }
+    .copy-status { min-height: 20px; margin-top: 10px; color: #176e69; font-size: 12px; }
+    .meta-preview {
+      max-width: 760px;
+      margin: 0 auto 18px;
+      padding: 14px 18px;
+      border-left: 4px solid #d79050;
+      background: #fff;
+      color: #3b4345;
+    }
+    .meta-preview strong { color: #1f2729; }
+    #article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 42px 46px 54px;
+      background: #fff;
+      box-shadow: 0 12px 34px rgba(23,31,33,.10);
+    }
+    @media (max-width: 640px) {
+      body { padding: 12px 8px 40px; }
+      .copy-panel { top: 6px; }
+      #article { padding: 30px 20px 42px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="copy-panel" aria-label="公众号复制工具">
+    <h1>公众号一键复制版</h1>
+    <p>按顺序复制标题、摘要和正文。正文会连同排版、静态图与 GIF 一起写入剪贴板。</p>
+    <div class="copy-actions">
+      <button type="button" id="copyTitle">复制标题</button>
+      <button type="button" id="copySummary">复制摘要</button>
+      <button type="button" class="primary" id="copyArticle">复制正文（含图片）</button>
+    </div>
+    <div class="copy-status" id="copyStatus" role="status">正在加载 8 张图片与 GIF...</div>
+  </section>
+
+  <section class="meta-preview">
+    <div><strong>标题：</strong><span id="titlePreview"></span></div>
+    <div><strong>摘要：</strong><span id="summaryPreview"></span></div>
+  </section>
+
+  <main id="article">
+<!--
+公众号发布信息（不进入正文）
+
+推荐标题：我把一块闲置屏幕，变成了会读云图的 AI 氛围屏
+备选标题：云海诗鉴：会看云、会写诗，还知道 AI 剩多少力气
+摘要：它连续看多帧云图，生成五言诗签，展开气象判读，还把 Codex 与 Claude 的额度做成一只算力码表。现在，Web 与 Android 版本已经开源。
+封面：images/article/00-cover.jpg
+GitHub：https://github.com/waytosea-oss/yunhai-shijian
+-->
+
+<h1
+id="我把一块闲置屏幕变成了会读云图的-ai-氛围屏">我把一块闲置屏幕，变成了会读云图的
+AI 氛围屏</h1>
+<p>很多人每天都会看天气，却很少真正看一张云图。</p>
+<p>天气 App
+告诉我们温度、降水概率和风力。卫星云图则更像一张正在书写的地球手稿：海面上的旋转云系、长江口附近的水汽、横跨大陆的冷云带，都在缓慢改变形态。</p>
+<p>只看一帧，它像壁纸。</p>
+<p>连续看几帧，它才开始讲述时间。</p>
+<p>我原本只是想给一台小度智能音箱做一个更耐看的屏保。后来，这件事逐渐长成了一套完整系统：它会读连续云图，会根据天气趋势写一首五言小诗，会把判断依据展开给我看；左上角还放着一只
+AI 算力码表，告诉我 Codex 和 Claude 还剩多少可用额度。</p>
+<p>我把它叫作 <strong>“云海诗鉴”</strong>。</p>
+<p><img src="images/article/00-cover.jpg"
+alt="云海诗鉴电脑端主屏" /></p>
+<p><em>公开演示使用合成云图与虚构算力数据，不对应任何时刻的真实天气。</em></p>
+<h2
+id="它不是一个天气插件而是一块每天都会生成内容的屏幕">它不是一个天气插件，而是一块每天都会生成内容的屏幕</h2>
+<p>云海诗鉴的主界面很克制。</p>
+<p>大部分面积留给云图。右侧是一枚半透明诗签，左上角是算力码表，右下角只有刷新和全屏两个按钮。远看，它是一幅会变化的云图；靠近一点，才会发现诗、判读和算力信息都藏在里面。</p>
+<p>整套系统分成四件事：</p>
+<p><strong>第一，连续看云。</strong>
+它读取按时间排列的多帧云图，比较云带位置、旋转结构、边界和组织程度的变化，而不是只对一张图片做静态描述。</p>
+<p><strong>第二，核对事实。</strong>
+台风名称、编号、强度、路径和预警必须来自权威气象快讯。AI
+可以观察到“像旋转云系的结构”，但不能仅凭形状擅自命名。</p>
+<p><strong>第三，写一首严格的五言诗。</strong>
+四行，每行五个字。诗可以把天气、地貌和当日国际风云放在同一个意象里，但不能代替新闻，也不能承担预报功能。</p>
+<p><strong>第四，把依据留下来。</strong>
+诗负责留白，判读页负责说明趋势、影响、证据和置信度。好看和可信必须分开表达。</p>
+<h2 id="一枚不抢画面的竖排诗签">一枚不抢画面的竖排诗签</h2>
+<p>我不希望这首诗变成一块挡住云图的大卡片。</p>
+<p>所以诗签被做成窄长条：两列竖排文字顶部对齐，右列多收第三句的前两个字，左列空出的地方落下一方“诗鉴”印章。文字完全不透明，底色半透明，既能读清，又能透出下面的云。</p>
+<p>更重要的是，它可以拖动。</p>
+<p>如果当天东南海面有值得观察的云系，就把诗签拖到左边；如果北方云带更关键，再挪回右下。位置会保存在浏览器本地，下次打开仍然在原处。</p>
+<p><img src="images/article/01-drag-poem.gif"
+alt="拖动诗签避开关键云系" /></p>
+<p><em>拖住诗签即可移动，松手后自动记住位置。</em></p>
+<h2 id="点一下诗签ai-的气象判读就展开了">点一下诗签，AI
+的气象判读就展开了</h2>
+<p>屏幕上的诗很轻，但生成它之前做过的判断不应该消失。</p>
+<p>单击诗签，会展开完整的“云图气象判读”：</p>
+<ul>
+<li>主要天气现象与置信度；</li>
+<li>云系的移动和发展趋势；</li>
+<li>对上海与长江口的可能影响；</li>
+<li>多帧云图的判断依据；</li>
+<li>天气意象与当日国际风云的文化映照；</li>
+<li>使用了多少帧云图、覆盖什么时间段。</li>
+</ul>
+<p>判读页右侧仍然保留当天的诗。读者既可以先看结论，也可以回头检查这四句诗从何而来。</p>
+<p><img src="images/article/02-analysis-font.gif"
+alt="点开诗签并切换书法字体" /></p>
+<p><em>从主屏进入判读页，再把志莽行书切换为马善政楷书。</em></p>
+<p><img src="images/article/04-analysis.png"
+alt="云图气象判读完整页面" /></p>
+<p>字体设置也放在这里。开源版内置 <strong>志莽行书</strong> 和
+<strong>马善政楷书</strong>，都附带明确的开源字体许可。启功体等授权边界不清楚的字体没有直接打包进仓库，使用者可以在确认授权后自行替换。</p>
+<p><img src="images/article/05-font-kai.png" alt="马善政楷书效果" /></p>
+<h2
+id="左上角为什么还有一只算力码表">左上角为什么还有一只“算力码表”</h2>
+<p>这是这个项目里最有意思、也最个人化的一部分。</p>
+<p>云图记录自然系统的变化，算力码表记录 AI 系统的可用余量。</p>
+<p>主屏左上角只显示 Codex 与 Claude
+当前最紧张的额度窗口、剩余百分比和刷新倒计时。点开以后，才能看到完整信息：</p>
+<ul>
+<li>5 小时、7 天或每周额度窗口；</li>
+<li>今日、近 7 天和本月 Token；</li>
+<li>最近 14 天使用趋势；</li>
+<li>当天算力花在了哪些项目上。</li>
+</ul>
+<p><img src="images/article/03-balance-meter.gif"
+alt="展开 AI 算力码表" /></p>
+<p><img src="images/article/06-balance.png"
+alt="算力码表完整页面" /></p>
+<p>它不是厂商账单页，也不直接登录模型账号。网页只读取一份聚合后的
+JSON，里面可以有百分比、刷新时间和匿名化项目统计，但绝不能放 API
+Key、Cookie、密码或完整对话内容。</p>
+<p>公开演示中的所有数字都是虚构的。</p>
+<h2 id="从小度屏保走到电脑和手机">从小度屏保，走到电脑和手机</h2>
+<p>云海诗鉴最初运行在小度这类横屏终端上，但开源版没有把它锁死在某一台设备里。</p>
+<p>现在它提供：</p>
+<ul>
+<li>浏览器全屏版，适合 Mac、Windows 和 Linux；</li>
+<li>手机、平板和 iOS 浏览器版；</li>
+<li>原生 Android 横屏应用；</li>
+<li>Android 系统 DreamService 屏保入口；</li>
+<li>三个简单接口，用来接入自己的云图、诗签和算力数据。</li>
+</ul>
+<p><img src="images/article/07-mobile-pair.png"
+alt="手机端主屏与气象判读" /></p>
+<p>同一套数据，可以在客厅的小屏幕上安静显示，也可以在电脑上展开阅读。它不是一张固定壁纸，而是一套可以持续更新的内容界面。</p>
+<h2 id="三分钟体验怎么把它运行起来">三分钟体验：怎么把它运行起来</h2>
+<p>项目已经以 Apache License 2.0 开源。</p>
+<p>电脑上安装 Node.js 20 或更高版本后，在终端执行：</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/waytosea-oss/yunhai-shijian.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> yunhai-shijian</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> start</span></code></pre></div>
+<p>然后打开：</p>
+<pre class="text"><code>http://127.0.0.1:8790</code></pre>
+<p>默认演示完全可以离线运行，不需要 API
+Key，也不会获取真实账户数据。</p>
+<p>打开以后，可以直接尝试这些操作：</p>
+<ul>
+<li><strong>拖动右侧诗签</strong>：把它放到不遮挡关键云系的位置。</li>
+<li><strong>单击诗签</strong>：展开 AI 多帧云图判读。</li>
+<li><strong>切换字体</strong>：在志莽行书和马善政楷书之间选择。</li>
+<li><strong>单击左上码表</strong>：查看 Codex 与 Claude
+的额度窗口和趋势。</li>
+<li><strong>点击右下全屏按钮</strong>：把浏览器变成一块专注的氛围屏。</li>
+<li><strong>按 Esc</strong>：退出当前展开页面。</li>
+</ul>
+<h2
+id="接入自己的云图只需要三类数据">接入自己的云图，只需要三类数据</h2>
+<p>开源版把数据层和界面层分开了。</p>
+<p>你可以保留现有界面，只替换下面三项：</p>
+<ul>
+<li><strong>云图</strong>：一张本地图片或合法的 HTTPS 图片地址。</li>
+<li><strong>诗签</strong>：四行五言诗，以及现象、趋势、影响、证据等
+JSON。</li>
+<li><strong>算力码表</strong>：经过聚合和脱敏的额度 JSON。</li>
+</ul>
+<p>启动时分别指定：</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">YUNHAI_CLOUD_IMAGE</span><span class="op">=</span>/path/to/cloud.jpg <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">YUNHAI_POEM_FILE</span><span class="op">=</span>/path/to/poem.json <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">YUNHAI_BALANCE_FILE</span><span class="op">=</span>/path/to/balance.json <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> start</span></code></pre></div>
+<p>如果要让 Android 设备访问电脑上的服务，可以用：</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">HOST</span><span class="op">=</span>0.0.0.0 <span class="ex">npm</span> start</span></code></pre></div>
+<p>再把 Android 端的服务地址改成电脑的局域网
+IP。项目文档里已经写好了构建、安装和 DreamService 屏保设置方法。</p>
+<h2 id="它也可以每天自动更新">它也可以每天自动更新</h2>
+<p>一套可靠的日更流程，不应该只有“让 AI 每天写首诗”这么简单。</p>
+<p>我把它拆成五步：</p>
+<ol type="1">
+<li>获取至少两帧、最好四帧已经授权的云图；</li>
+<li>获取权威天气、台风快讯和必要的公开新闻摘要；</li>
+<li>让 AI 完成多帧判读并生成严格四行五字的诗；</li>
+<li>原子更新云图、诗签和算力 JSON，失败时保留上一版；</li>
+<li>等页面刷新后自动截图，把主屏、判读页和数据存档。</li>
+</ol>
+<p>macOS 可以用 <code>launchd</code>，Linux 可以用
+<code>systemd timer</code>。个人 API
+Key、受限云图和私人余额应保留在自己的电脑或服务器上，不应该提交到公开
+GitHub 仓库。</p>
+<h2
+id="它能做什么也要明确它不能做什么">它能做什么，也要明确它不能做什么</h2>
+<p>云海诗鉴首先是一块 <strong>AI
+气象氛围屏</strong>，其次才是一个技术项目。</p>
+<p>它可以帮助人观察云系变化、理解 AI
+的判断过程，并让一块闲置屏幕每天出现一点新的内容。</p>
+<p>但它不是官方天气预报，不承担灾害预警、航海、航空或应急决策功能。真实部署时，云图、地图、新闻和预警信息都必须确认授权；台风名称与路径必须以权威机构发布为准。</p>
+<p>这条边界不是为了削弱产品，而是为了让它能够长期、认真地运行下去。</p>
+<h2 id="为什么选择开源">为什么选择开源</h2>
+<p>一开始，我也想过把它做成一个付费 App。</p>
+<p>但我后来发现，真正有意思的不是把它锁进一个应用商店，而是让不同的人把它放到不同的地方：</p>
+<p>有人关注南海台风，有人想看青藏高原水汽；有人放在书房，有人放在展厅；有人接入别的模型，有人会写出完全不同的诗。</p>
+<p>于是，我把 Web 端、Android 端、DreamService、AI
+生成器、数据接口、算力码表和部署文档都整理出来，放到了 GitHub。</p>
+<p><strong>项目地址：<a
+href="https://github.com/waytosea-oss/yunhai-shijian">https://github.com/waytosea-oss/yunhai-shijian</a></strong></p>
+<p>云在天上走，诗在屏上落，算力在左上角慢慢回满。</p>
+<p>这就是云海诗鉴。</p>
+  </main>
+
+  <script>
+    const TITLE = "我把一块闲置屏幕，变成了会读云图的 AI 氛围屏";
+    const SUMMARY = "它连续看多帧云图，生成五言诗签，展开气象判读，还把 Codex 与 Claude 的额度做成一只算力码表。现在，Web 与 Android 版本已经开源。";
+    const RAW_ROOT = "https://raw.githubusercontent.com/waytosea-oss/yunhai-shijian/main/docs/";
+
+    const article = document.querySelector("#article");
+    const status = document.querySelector("#copyStatus");
+    document.querySelector("#titlePreview").textContent = TITLE;
+    document.querySelector("#summaryPreview").textContent = SUMMARY;
+
+    function removeNonBodyContent() {
+      article.querySelector("h1")?.remove();
+      article.querySelectorAll("pre a[aria-hidden=true]").forEach((link) => link.remove());
+      const walker = document.createTreeWalker(article, NodeFilter.SHOW_COMMENT);
+      const comments = [];
+      while (walker.nextNode()) comments.push(walker.currentNode);
+      comments.forEach((comment) => comment.remove());
+    }
+
+    function applyInlineStyles() {
+      article.style.cssText = "max-width:760px;margin:0 auto;padding:0;background:#ffffff;color:#2d3335;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.85;letter-spacing:0;";
+
+      article.querySelectorAll("p").forEach((element) => {
+        element.style.cssText = "margin:0 0 18px;color:#2d3335;font-size:16px;line-height:1.85;letter-spacing:0;text-align:justify;";
+      });
+      article.querySelectorAll("h2").forEach((element) => {
+        element.style.cssText = "margin:42px 0 20px;padding:2px 0 2px 12px;border-left:4px solid #d79050;color:#182022;font-size:21px;line-height:1.5;font-weight:750;letter-spacing:0;";
+      });
+      article.querySelectorAll("strong").forEach((element) => {
+        element.style.cssText = "color:#111718;font-weight:750;";
+      });
+      article.querySelectorAll("ul,ol").forEach((element) => {
+        element.style.cssText = "margin:0 0 20px;padding-left:24px;color:#2d3335;";
+      });
+      article.querySelectorAll("li").forEach((element) => {
+        element.style.cssText = "margin:7px 0;color:#2d3335;font-size:16px;line-height:1.75;";
+      });
+      article.querySelectorAll("pre").forEach((element) => {
+        element.style.cssText = "display:block;overflow-x:auto;margin:14px 0 22px;padding:16px 18px;border:1px solid #e0e4e5;border-radius:4px;background:#f5f7f7;color:#263033;font-family:SFMono-Regular,Consolas,'Liberation Mono',monospace;font-size:13px;line-height:1.65;white-space:pre-wrap;word-break:break-word;";
+      });
+      article.querySelectorAll("code").forEach((element) => {
+        element.style.cssText = "font-family:SFMono-Regular,Consolas,'Liberation Mono',monospace;font-size:13px;";
+      });
+      article.querySelectorAll("a").forEach((element) => {
+        element.style.cssText = "color:#176e69;text-decoration:underline;text-underline-offset:3px;";
+      });
+      article.querySelectorAll("img").forEach((element) => {
+        element.style.cssText = "display:block;width:100%;max-width:100%;height:auto;margin:0;border:0;border-radius:2px;";
+      });
+      article.querySelectorAll("p").forEach((element) => {
+        if (element.querySelector(":scope > img")) {
+          element.style.cssText = "margin:26px 0 12px;padding:0;text-align:center;";
+        } else if (element.children.length === 1 && element.firstElementChild?.tagName === "EM") {
+          element.style.cssText = "margin:0 0 24px;color:#7a8385;font-size:13px;line-height:1.6;text-align:center;";
+          element.firstElementChild.style.cssText = "color:#7a8385;font-style:normal;";
+        }
+      });
+    }
+
+    function usePublicImageUrls() {
+      article.querySelectorAll("img").forEach((image) => {
+        const source = image.getAttribute("src") || "";
+        if (!/^https?:\/\//i.test(source)) {
+          image.setAttribute("src", RAW_ROOT + source.replace(/^\.\//, ""));
+        }
+        image.setAttribute("referrerpolicy", "no-referrer");
+      });
+    }
+
+    function updateImageStatus() {
+      const images = [...article.querySelectorAll("img")];
+      const loaded = images.filter((image) => image.complete && image.naturalWidth > 0).length;
+      status.textContent = loaded === images.length
+        ? "8 张图片与 GIF 已加载，可以复制。"
+        : "正在加载图片与 GIF：" + loaded + "/" + images.length;
+    }
+
+    async function waitForImages() {
+      const images = [...article.querySelectorAll("img")];
+      await Promise.race([
+        Promise.all(images.map((image) => image.complete
+          ? Promise.resolve()
+          : new Promise((resolve) => {
+              image.addEventListener("load", resolve, { once: true });
+              image.addEventListener("error", resolve, { once: true });
+            }))),
+        new Promise((resolve) => setTimeout(resolve, 10000)),
+      ]);
+      updateImageStatus();
+    }
+
+    function richHtml() {
+      const clone = article.cloneNode(true);
+      clone.removeAttribute("id");
+      clone.style.maxWidth = "100%";
+      return "<!--StartFragment-->" + clone.outerHTML + "<!--EndFragment-->";
+    }
+
+    function legacyCopy(html, plain) {
+      const handler = (event) => {
+        event.preventDefault();
+        event.clipboardData.setData("text/html", html);
+        event.clipboardData.setData("text/plain", plain);
+      };
+      document.addEventListener("copy", handler, { once: true });
+      const ok = document.execCommand("copy");
+      if (!ok) {
+        document.removeEventListener("copy", handler);
+        throw new Error("浏览器未允许复制");
+      }
+    }
+
+    async function copyRichArticle() {
+      status.textContent = "正在准备正文和图片...";
+      await waitForImages();
+      const html = richHtml();
+      const plain = article.innerText;
+      try {
+        if (window.ClipboardItem && navigator.clipboard?.write) {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              "text/html": new Blob([html], { type: "text/html" }),
+              "text/plain": new Blob([plain], { type: "text/plain" }),
+            }),
+          ]);
+        } else {
+          legacyCopy(html, plain);
+        }
+        status.textContent = "正文已复制。现在切换到公众号编辑器，按 Command + V 粘贴。";
+      } catch (error) {
+        try {
+          legacyCopy(html, plain);
+          status.textContent = "正文已复制。现在切换到公众号编辑器，按 Command + V 粘贴。";
+        } catch {
+          status.textContent = "自动复制被浏览器拦截。请在正文区域按 Command + A、Command + C。";
+        }
+      }
+    }
+
+    async function copyText(value, label) {
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = value;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.append(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      status.textContent = label + "已复制。";
+    }
+
+    removeNonBodyContent();
+    applyInlineStyles();
+    usePublicImageUrls();
+    article.querySelectorAll("img").forEach((image) => {
+      image.addEventListener("load", updateImageStatus);
+      image.addEventListener("error", updateImageStatus);
+    });
+    updateImageStatus();
+
+    document.querySelector("#copyTitle").addEventListener("click", () => copyText(TITLE, "标题"));
+    document.querySelector("#copySummary").addEventListener("click", () => copyText(SUMMARY, "摘要"));
+    document.querySelector("#copyArticle").addEventListener("click", copyRichArticle);
+  </script>
+</body>
+</html>
