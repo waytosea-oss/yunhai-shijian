@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#101415">
+    <title>云海诗鉴</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/app.css">
+  </head>
+  <body>
+    <main class="cloud-stage" id="cloudStage">
+      <img class="cloud-image" id="cloudImage" alt="卫星风格云图">
+
+      <section class="balance-meter" id="balanceMeter" role="button" tabindex="0" aria-label="打开 AI 算力码表">
+        <div class="meter-row" data-tool="codex">
+          <span class="meter-badge meter-badge-c">C</span>
+          <div class="meter-body">
+            <span class="meter-reset" id="codexReset">--</span>
+            <span class="meter-track"><span class="meter-fill meter-fill-c" id="codexFill"></span></span>
+          </div>
+          <strong class="meter-value meter-value-c" id="codexValue">--</strong>
+        </div>
+        <div class="meter-row" data-tool="claude">
+          <span class="meter-badge meter-badge-a">A</span>
+          <div class="meter-body">
+            <span class="meter-reset" id="claudeReset">--</span>
+            <span class="meter-track"><span class="meter-fill meter-fill-a" id="claudeFill"></span></span>
+          </div>
+          <strong class="meter-value meter-value-a" id="claudeValue">--</strong>
+        </div>
+      </section>
+
+      <aside class="poem-slip font-xing" id="poemSlip" role="button" tabindex="0" aria-label="打开云图气象判读">
+        <div class="poem-columns" aria-hidden="true">
+          <div class="poem-column poem-column-left" id="poemLeft"></div>
+          <div class="poem-column poem-column-right" id="poemRight"></div>
+        </div>
+      </aside>
+
+      <div class="stage-tools" aria-label="显示控制">
+        <button class="icon-button" id="refreshButton" type="button" title="刷新云图" aria-label="刷新云图">↻</button>
+        <button class="icon-button" id="fullscreenButton" type="button" title="全屏显示" aria-label="全屏显示">⛶</button>
+      </div>
+      <p class="data-notice" id="dataNotice"></p>
+      <p class="status-line" id="statusLine" role="status"></p>
+    </main>
+
+    <section class="analysis-panel" id="analysisPanel" aria-hidden="true" aria-label="云图气象判读">
+      <button class="close-button" id="closeAnalysis" type="button" title="关闭" aria-label="关闭气象判读">×</button>
+      <div class="analysis-content">
+        <header class="analysis-header">
+          <h1>云图气象判读</h1>
+          <p><span id="analysisDate">--</span><span aria-hidden="true"> · </span>AI 多帧视觉分析</p>
+        </header>
+
+        <div class="analysis-sections">
+          <section class="analysis-section">
+            <h2>主要天气现象 <span>· 置信度 <b id="confidence">--</b></span></h2>
+            <p id="phenomenon">正在读取今日判读。</p>
+          </section>
+          <section class="analysis-section">
+            <h2>移动与发展趋势</h2>
+            <p id="trend">正在读取今日判读。</p>
+          </section>
+          <section class="analysis-section">
+            <h2>对上海与长江口的影响</h2>
+            <p id="localImpact">正在读取今日判读。</p>
+          </section>
+          <section class="analysis-section">
+            <h2>多帧判读依据</h2>
+            <p id="summary">正在读取今日判读。</p>
+          </section>
+          <section class="analysis-section">
+            <h2>国际风云映照</h2>
+            <p id="worldEcho">正在读取今日判读。</p>
+          </section>
+        </div>
+        <p class="evidence-line" id="evidenceLine">连续多帧云图</p>
+      </div>
+
+      <aside class="analysis-poem font-xing" id="analysisPoem">
+        <h2 id="poemTitle">云图诗鉴</h2>
+        <div class="analysis-poem-columns" aria-label="今日五言诗">
+          <div class="poem-column poem-column-left" id="analysisPoemLeft"></div>
+          <div class="poem-column poem-column-right" id="analysisPoemRight"></div>
+        </div>
+        <div class="font-setting">
+          <span>诗签字体</span>
+          <div class="segmented-control" role="group" aria-label="选择诗签字体">
+            <button type="button" data-font="xing" aria-pressed="true">志莽行书</button>
+            <button type="button" data-font="kai" aria-pressed="false">马善政楷书</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="balance-panel" id="balancePanel" aria-hidden="true" aria-label="AI 算力码表详情">
+      <button class="close-button" id="closeBalance" type="button" title="关闭" aria-label="关闭算力码表">×</button>
+      <header class="balance-header">
+        <h1>算力码表</h1>
+        <p><span id="balanceUpdatedAt">--</span><span aria-hidden="true"> · </span>额度窗口与使用趋势</p>
+      </header>
+      <div class="balance-detail-grid">
+        <section class="tool-detail tool-detail-c" aria-labelledby="codexDetailTitle">
+          <header class="tool-detail-header">
+            <div>
+              <span class="tool-kicker">C</span>
+              <h2 id="codexDetailTitle">Codex</h2>
+            </div>
+            <strong id="codexDetailPercent">--</strong>
+          </header>
+          <div class="window-list" id="codexWindows"></div>
+          <dl class="usage-stats" id="codexStats"></dl>
+          <div class="trend-block">
+            <h3>最近 14 天</h3>
+            <div class="trend-chart" id="codexTrend"></div>
+          </div>
+          <div class="project-block">
+            <h3>今日项目</h3>
+            <div class="project-list" id="codexProjects"></div>
+          </div>
+        </section>
+
+        <section class="tool-detail tool-detail-a" aria-labelledby="claudeDetailTitle">
+          <header class="tool-detail-header">
+            <div>
+              <span class="tool-kicker">A</span>
+              <h2 id="claudeDetailTitle">Claude</h2>
+            </div>
+            <strong id="claudeDetailPercent">--</strong>
+          </header>
+          <div class="window-list" id="claudeWindows"></div>
+          <dl class="usage-stats" id="claudeStats"></dl>
+          <div class="trend-block">
+            <h3>最近 14 天</h3>
+            <div class="trend-chart" id="claudeTrend"></div>
+          </div>
+          <div class="project-block">
+            <h3>今日项目</h3>
+            <div class="project-list" id="claudeProjects"></div>
+          </div>
+        </section>
+      </div>
+      <p class="balance-footnote">码表只读取聚合后的余额 JSON，不接触模型账号密码或原始访问令牌。</p>
+    </section>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

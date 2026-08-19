@@ -1,0 +1,25 @@
+{
+  "name": "yunhai-shijian",
+  "version": "0.1.0",
+  "private": true,
+  "description": "会读云图的 AI 气象氛围屏，带可拖动诗签与 AI 算力码表。",
+  "type": "module",
+  "repository": "https://github.com/waytosea-oss/yunhai-shijian",
+  "homepage": "https://github.com/waytosea-oss/yunhai-shijian#readme",
+  "keywords": [
+    "weather",
+    "satellite-imagery",
+    "screensaver",
+    "generative-ai",
+    "chinese-poetry"
+  ],
+  "scripts": {
+    "start": "node backend/server.mjs",
+    "generate": "node backend/generate-poem.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "Apache-2.0"
+}

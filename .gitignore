@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.playwright-cli/
+.playwright-mcp/
+node_modules/
+runtime/
+output/
+apps/android/build/
+apps/android/debug.keystore
+*.apk
+*.aab
+*.idsig

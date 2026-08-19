@@ -1,0 +1,63 @@
+{
+  "codex": {
+    "windows": [
+      { "label": "5时", "pct": 62, "resetAfterMinutes": 138, "hourScale": true },
+      { "label": "7天", "pct": 48, "resetAfterMinutes": 6340, "hourScale": false }
+    ],
+    "today": 4267895,
+    "week": 51813853,
+    "month": 68045463,
+    "trend": [
+      { "label": "8/06", "tokens": 1200000 },
+      { "label": "8/07", "tokens": 3200000 },
+      { "label": "8/08", "tokens": 1800000 },
+      { "label": "8/09", "tokens": 0 },
+      { "label": "8/10", "tokens": 2600000 },
+      { "label": "8/11", "tokens": 700000 },
+      { "label": "8/12", "tokens": 4200000 },
+      { "label": "8/13", "tokens": 1800000 },
+      { "label": "8/14", "tokens": 3400000 },
+      { "label": "8/15", "tokens": 8200000 },
+      { "label": "8/16", "tokens": 5100000 },
+      { "label": "8/17", "tokens": 900000 },
+      { "label": "8/18", "tokens": 2900000 },
+      { "label": "8/19", "tokens": 4267895 }
+    ],
+    "projects": [
+      { "name": "云图多帧判读", "tokens": 2108395 },
+      { "name": "诗签排版", "tokens": 1246000 },
+      { "name": "开源文档", "tokens": 913500 }
+    ]
+  },
+  "claude": {
+    "windows": [
+      { "label": "5时", "pct": 84, "resetAfterMinutes": 176, "hourScale": true },
+      { "label": "周·全部", "pct": 42, "resetAfterMinutes": 7180, "hourScale": false },
+      { "label": "周·模型", "pct": 31, "resetAfterMinutes": 7180, "hourScale": false }
+    ],
+    "today": 18320000,
+    "week": 126340000,
+    "month": 318920000,
+    "trend": [
+      { "label": "8/06", "tokens": 8200000 },
+      { "label": "8/07", "tokens": 12600000 },
+      { "label": "8/08", "tokens": 4100000 },
+      { "label": "8/09", "tokens": 22900000 },
+      { "label": "8/10", "tokens": 17600000 },
+      { "label": "8/11", "tokens": 7800000 },
+      { "label": "8/12", "tokens": 19200000 },
+      { "label": "8/13", "tokens": 6300000 },
+      { "label": "8/14", "tokens": 9200000 },
+      { "label": "8/15", "tokens": 26700000 },
+      { "label": "8/16", "tokens": 14800000 },
+      { "label": "8/17", "tokens": 3400000 },
+      { "label": "8/18", "tokens": 15800000 },
+      { "label": "8/19", "tokens": 18320000 }
+    ],
+    "projects": [
+      { "name": "气象资料摘要", "tokens": 8320000 },
+      { "name": "代码复核", "tokens": 5810000 },
+      { "name": "公众号文章", "tokens": 4190000 }
+    ]
+  }
+}

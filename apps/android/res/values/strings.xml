@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">云海诗鉴</string>
+    <!-- Android emulator reaches the host machine through 10.0.2.2. -->
+    <string name="server_url">http://10.0.2.2:8790</string>
+</resources>
