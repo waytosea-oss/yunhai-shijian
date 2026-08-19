@@ -2,7 +2,6 @@
 
 > 会读云图的 AI 气象氛围屏：让连续卫星云图、五言诗签与 AI 算力码表，在同一块屏幕上安静地工作。
 
-[![Check](https://github.com/waytosea-oss/yunhai-shijian/actions/workflows/check.yml/badge.svg)](https://github.com/waytosea-oss/yunhai-shijian/actions/workflows/check.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-2f6f68.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/Node.js-%E2%89%A520-3c873a.svg)](package.json)
 
